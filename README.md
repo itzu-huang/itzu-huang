@@ -14,6 +14,13 @@
 
 除了課業與程式實作之外，我也有一般職場與接案工作的經驗，接觸過資料整理、文件處理、溝通、問題處理與成果交付。我希望這個 GitHub 能記錄實際完成的專案、課程成果與學習過程，清楚區分已使用過的工具與仍在學習的領域。
 
+## 🎓 Education
+
+**Fu Jen Catholic University**<br>
+Department of Statistics and Information Science<br>
+2023 – Present<br>
+輔仁大學統計資訊學系
+
 ## 💼 Work Experience
 
 ### 中華郵政相關暑期外包工讀
@@ -59,11 +66,11 @@
 
 Statistical Inference · Regression Analysis · ANOVA · Experimental Design · Time Series Analysis · Multivariate Analysis · Nonparametric Statistics
 
-## 🚀 Featured Project
+## 🚀 Featured Projects
 
-### [Diabetes Deterioration Risk Project](https://github.com/itzu-huang/Diabetes_Deterioration_Risk_Project)
+### [Diabetes Deterioration Risk Project](https://github.com/itzu-huang/Diabetes_Deterioration_Risk_Project) — Team Project
 
-這是一個以第二型糖尿病資料為主題的統計與資料分析專案，包含臨床資料分析與 CGM 時間序列分析。臨床資料部分主要進行目前併發症的關聯分析與風險分層；CGM 資料部分則進行具有時間順序的短期分析與預測。
+這是一個以第二型糖尿病資料為主題的團隊統計與資料分析專案，使用 100 位患者的 109 筆監測紀錄、33 項臨床摘要變數與 112,287 筆 CGM 讀數。臨床資料部分主要進行目前併發症的關聯分析與風險分層；CGM 資料部分則進行具有時間順序的短期分析與預測。
 
 主要實作內容包括：
 
@@ -76,11 +83,32 @@ Statistical Inference · Regression Analysis · ANOVA · Experimental Design · 
 - 臨床與 CGM 雙軸風險整合
 - Monte Carlo 醫療成本情境分析
 
+分析管線與可驗證結果包括：
+
+- 以 `scikit-learn Pipeline` 封裝缺失值插補與標準化，並只在交叉驗證訓練折中配適
+- 以患者為分組單位進行交叉驗證，避免同一患者的紀錄同時出現在訓練與測試資料
+- 比較 Logistic Regression 與 XGBoost；三個併發症目標的 AUC 中位數約介於 0.805–0.862，未觀察到 XGBoost 穩定優於基準模型
+- 以 SHAP 與勝算比輔助模型解釋，並比較逐人與跨患者合併訓練的 LSTM 設計
+- 跨患者合併訓練的 LSTM 相對 persistence baseline 的改善中位數由 21.0% 提升至 37.2%
+
 使用或實作的方法包括：
 
 `Python` · `scikit-learn` · `Logistic Regression` · `XGBoost` · `K-means` · `Gaussian Mixture Model` · `Markov Model` · `LSTM` · `GroupKFold` · `Out-of-Fold Evaluation` · `Monte Carlo Simulation`
 
 > 本專案屬於研究與方法實作原型，主要用於資料分析與模型探索，不應直接作為臨床診斷或治療依據。
+
+### New Taipei City Building Permit Clustering Analysis
+
+這是課程中的自主學習成果，使用新北市建築執照公開資料，資料約包含 13,072 筆建築案件與 10 個主要變數，涵蓋連續與類別資料。分析從公開資料選擇、欄位理解與整理開始，再進行分群與結果解釋。
+
+實作流程包括：
+
+- 以中位數處理缺失值，並對不同尺度的數值變數進行標準化
+- 使用 K-means 探索建築案件的群組結構，並以 elbow method 輔助選擇群數
+- 使用 PCA 將標準化資料降至二維進行視覺化
+- 以階層式分群與抽樣 dendrogram 作為補充探索
+
+在 K = 3 的設定下，結果呈現小型、中型與較大型建築案件的差異；此成果主要用於課程中的資料分析練習，不將其延伸解讀為正式研究或政策結論。
 
 ## 📊 Data Mining Coursework & Independent Study
 
@@ -107,6 +135,15 @@ Missing value handling · Label Encoding · One-Hot Encoding · Standardization 
 ### Clustering
 
 曾使用 K-means 與 Standardization 探索資料中可能存在的群組結構，並練習 cluster interpretation。
+
+### Survey Sampling
+
+使用 USPOP 資料練習抽樣估計與誤差評估，包括：
+
+- 以 ratio estimator 與 simple average 估計 65 歲以上人口比例及貧窮人口比例
+- 比較不同估計方法的估計值與 bound on the error of estimation
+- 練習 two-stage cluster sampling，以抽樣行政區與行政區內州別估計總人口及其變異數
+- 討論 ratio estimation、stratified random sampling 與 two-stage cluster sampling 的適用情境
 
 ### 🌱 Independent Study
 
