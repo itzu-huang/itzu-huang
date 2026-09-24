@@ -91,6 +91,17 @@ Statistical Inference · Regression Analysis · ANOVA · Experimental Design · 
 - 以 SHAP 與勝算比輔助模型解釋，並比較逐人與跨患者合併訓練的 LSTM 設計
 - 跨患者合併訓練的 LSTM 相對 persistence baseline 的改善中位數由 21.0% 提升至 37.2%
 
+### Elder-friendly Decision Support App Prototype
+
+團隊也完成高齡友善決策支援 App 原型，包含：
+
+- Summary / CGM data input
+- Risk quadrant visualization
+- TIR / GMI / CV indicators
+- AGP visualization
+- Monte Carlo medical cost simulation
+- Elder-friendly interface design
+
 使用或實作的方法包括：
 
 `Python` · `scikit-learn` · `Logistic Regression` · `XGBoost` · `K-means` · `Gaussian Mixture Model` · `Markov Model` · `LSTM` · `GroupKFold` · `Out-of-Fold Evaluation` · `Monte Carlo Simulation`
@@ -108,9 +119,15 @@ Statistical Inference · Regression Analysis · ANOVA · Experimental Design · 
 - 使用 PCA 將標準化資料降至二維進行視覺化
 - 以階層式分群與抽樣 dendrogram 作為補充探索
 
-在 K = 3 的設定下，結果呈現小型、中型與較大型建築案件的差異；此成果主要用於課程中的資料分析練習，不將其延伸解讀為正式研究或政策結論。
+在 K = 3 的設定下，分群將建築執照紀錄分成三個概略的規模群組：
 
-## 📊 Data Mining Coursework & Independent Study
+- Small-scale buildings: 9,782 cases
+- Medium-to-large buildings: 3,092 cases
+- Very large buildings: 198 cases
+
+此成果主要用於課程中的探索性資料分析練習。
+
+## 📊 Data Mining & Selected Coursework
 
 透過資料採礦課程與自主學習，我曾使用不同資料集練習資料前處理、特徵處理、分類、分群、關聯法則與模型評估。
 
@@ -126,7 +143,7 @@ Missing value handling · Label Encoding · One-Hot Encoding · Standardization 
 
 ### Feature Selection
 
-曾接觸 Chi-square feature selection、SelectKBest、model-based feature selection 與 feature importance。課堂作業的重點是比較不同特徵選擇方式與模型設定，而不是宣稱已具備專業特徵工程能力。
+曾接觸 Chi-square feature selection、SelectKBest、model-based feature selection 與 feature importance。課堂練習著重於比較不同特徵選擇方法與模型設定，並觀察特徵選擇對分類結果的影響。
 
 ### Association Rule Mining
 
@@ -136,7 +153,7 @@ Missing value handling · Label Encoding · One-Hot Encoding · Standardization 
 
 曾使用 K-means 與 Standardization 探索資料中可能存在的群組結構，並練習 cluster interpretation。
 
-### Survey Sampling
+### 📐 Survey Sampling — US Population Data
 
 使用 USPOP 資料練習抽樣估計與誤差評估，包括：
 
@@ -144,19 +161,6 @@ Missing value handling · Label Encoding · One-Hot Encoding · Standardization 
 - 比較不同估計方法的估計值與 bound on the error of estimation
 - 練習 two-stage cluster sampling，以抽樣行政區與行政區內州別估計總人口及其變異數
 - 討論 ratio estimation、stratified random sampling 與 two-stage cluster sampling 的適用情境
-
-### 🌱 Independent Study
-
-以新北市建築執照資料進行課程中的自主學習資料分析。資料包含至少 1,000 筆資料、至少 10 個變數，以及連續與類別資料。
-
-實作內容包括：
-
-- 尋找並選擇公開資料，理解資料來源與欄位
-- 缺失值處理、資料整理與變數轉換
-- 標準化與探索性資料分析
-- 分群分析與結果解釋
-
-這項成果的重點是從公開資料選擇與整理開始，再進行分析，而不只是使用已整理好的課堂資料。
 
 ## 📚 Currently Learning / Exploring
 
@@ -168,8 +172,6 @@ Missing value handling · Label Encoding · One-Hot Encoding · Standardization 
 - Machine Learning
 - Statistical Computing
 - Model Interpretation
-
-這些主題代表目前的學習與探索方向，不代表已經在每個領域具備完整或職業級的專業能力。
 
 ## 📈 GitHub Activity
 
