@@ -108,52 +108,67 @@ Statistical Inference · Regression Analysis · ANOVA · Experimental Design · 
 
 > 本專案屬於研究與方法實作原型，主要用於資料分析與模型探索，不應直接作為臨床診斷或治療依據。
 
-### New Taipei City Building Permit Clustering Analysis
+### New Taipei City Building Permit Classification & Clustering Analysis
+**Data Mining Final Project**
 
-這是課程中的自主學習成果，使用新北市建築執照公開資料，資料約包含 13,072 筆建築案件與 10 個主要變數，涵蓋連續與類別資料。分析從公開資料選擇、欄位理解與整理開始，再進行分群與結果解釋。
+這是一份以新北市政府開放資料平台建築執照紀錄為資料來源的 Data Mining 課程期末專案。原始資料包含 14,243 筆紀錄與 29 個變數（29 variables）；清理後保留 13,072 筆有效 target 資料，以 `whether_for_public`（Public / Non-public）作為分類目標，並以建築規模、土地使用、建築用途、停車位與日期等資訊練習 supervised learning 與 clustering。
 
-實作流程包括：
+資料準備包括移除 identifier／high-cardinality 欄位、清理 numeric 欄位文字與異常格式、處理百分比欄位、轉換 ROC dates，以及建立 `licensing_year`、`licensing_month`、`permit_wait_days`、`construction_duration_days`、`total_parking_spaces`、`land_use_group` 與 `building_use_group` 等衍生變數。數值欄位使用 training-set median、類別欄位使用 training-set mode；target 缺失或無效值則移除。需要 train/test separation 時，preprocessing 只使用 training data fitted，以避免 data leakage。
 
-- 以中位數處理缺失值，並對不同尺度的數值變數進行標準化
-- 使用 K-means 探索建築案件的群組結構，並以 elbow method 輔助選擇群數
-- 使用 PCA 將標準化資料降至二維進行視覺化
-- 以階層式分群與抽樣 dendrogram 作為補充探索
+監督式學習比較 Decision Tree（Gini、Entropy、tree complexity、feature selection 與 cross-validation）、Support Vector Machine（SVM；scaling、Linear／RBF concepts 與 C comparison）、Random Forest（number of trees、tree depth 與參數比較）、K-Nearest Neighbors（KNN；scaling 與 K comparison），以及 Hard Voting 與 Soft Voting。最終比較中，Random Forest 在 supervised models 中呈現較強的 testing performance；Soft Voting 顯示結合多個分類器的可能性，但不一定勝過最佳單一模型。
 
-在 K = 3 的設定下，分群將建築執照紀錄分成三個概略的規模群組：
+非監督式學習則以 K-Means、Elbow Method、SSE、Silhouette Score、Cluster Profile、Cluster Interpretation 與 majority-vote comparison 探索資料結構。這裡的 K-Means 較適合用來探索 building profiles / groups，而不是取代主要的 supervised classification。
 
-- Small-scale buildings: 9,782 cases
-- Medium-to-large buildings: 3,092 cases
-- Very large buildings: 198 cases
+## 📊 Data Mining Coursework & Learning Progression
 
-此成果主要用於課程中的探索性資料分析練習。
+這些課程作業與練習逐步建立資料前處理、模型評估、分類、分群與關聯法則的基礎，最後整合到上述 Data Mining Final Project。
 
-## 📊 Data Mining & Selected Coursework
+### Data Handling & Preprocessing
 
-透過資料採礦課程與自主學習，我曾使用不同資料集練習資料前處理、特徵處理、分類、分群、關聯法則與模型評估。
+曾使用 `pandas` / DataFrame 處理 CSV、以 XML parsing 讀取資料，並練習 mean／median／mode imputation、identifier removal、data type transformation、equal-width／equal-frequency discretization、Label Encoding、One-Hot Encoding 與 Standardization。Bank、Titanic、ProductSales 與 YouBike 等資料集是逐步建立 preprocessing 基礎的 coursework exercises。
 
-### Data Preprocessing
+### Decision Tree Foundations & Feature Selection
 
-Missing value handling · Label Encoding · One-Hot Encoding · Standardization · Discretization / Binning · Train/Test Split · Data transformation
+練習 Gini impurity、Entropy、Information Gain、continuous-variable split points、Gini vs Entropy、tree depth 與 number of leaves，也比較 Chi-square feature selection、SelectKBest 與 model-based feature importance。比較 all features、Chi-square selected features 與 model-based selected features 時，觀察到減少特徵不一定會改善 testing performance。
 
-主要使用 `Python`、`pandas` 與 `scikit-learn`。
+### Validation, Overfitting & Evaluation
 
-### Classification
+曾接觸 optimistic／pessimistic estimate、holdout validation、cross-validation、Leave-One-Out concept 與 parameter tuning。透過比較不同 `min_samples_split` 下的 training accuracy、testing accuracy、tree leaves 與 tree depth，觀察 training performance 上升而 testing performance 開始下降時，可能是 overfitting 的警訊；也練習 10-fold cross-validation 與 train/test performance comparison。
 
-曾練習 Decision Tree、Random Forest 與 Support Vector Machine，並比較 Entropy、Gini、Accuracy 與 F1 Score 等概念。
+### Model Evaluation & Class Imbalance
 
-### Feature Selection
+練習 Confusion Matrix、Accuracy、Precision、Recall、F1 Score 與 Cost Matrix，並接觸 Random Under-sampling、Random Over-sampling 與 SMOTE。當 class distribution 或錯誤成本重要時，Accuracy 不一定足夠。
 
-曾接觸 Chi-square feature selection、SelectKBest、model-based feature selection 與 feature importance。課堂練習著重於比較不同特徵選擇方法與模型設定，並觀察特徵選擇對分類結果的影響。
+### KNN, SVM & Random Forest
+
+- **K-Nearest Neighbors (KNN)**：One-Hot Encoding、scaling、distance-based classification，以及探索 K 如何影響 KNN performance。
+- **SVM**：Label Encoding／numeric representation、StandardScaler、Linear SVM、RBF SVM concepts、C parameter 與 weighted F1 evaluation。
+- **Random Forest**：ensemble of decision trees、`n_estimators`、`max_depth`、training/testing comparison 與 overfitting awareness。
+
+### Ensemble Learning
+
+以 Decision Tree、Random Forest、KNN 與 SVM 練習 Hard Voting 與 Soft Voting。在一次 Titanic coursework comparison 中，兩種 voting 方法改善了部分模型的表現，但最佳單一模型仍可能有較好的 testing performance；這是該次課堂比較的觀察，不延伸為普遍結論。
+
+### Clustering & Interpretation
+
+練習 K-Means、Elbow Method、SSE、Silhouette Score、cluster centroid、cluster profiling、cluster interpretation 與 majority-class mapping。Titanic clustering coursework 曾以 survival rate、fare、passenger class、sex 與 family-related variables 進行群組描述與命名。
 
 ### Association Rule Mining
 
-曾練習 Support、Confidence、Lift、Association Rules 與 rule interpretation。除了尋找較高的 confidence，也會與單一條件的 baseline confidence 比較，判斷組合規則是否真的帶來額外資訊；例如組合規則的 confidence 若只略高於其中一個條件本身的 confidence，其額外解釋力可能有限。
+保留 Support、Confidence、Lift、Association Rules 與 rule interpretation 的練習，也比較單一條件的 baseline confidence。一條組合規則即使有較高 confidence，也不代表組合本身一定提供大量額外資訊；若只比其中一個條件略高，其 incremental information 可能有限。
 
-### Clustering
+### Key Learning Takeaways
 
-曾使用 K-means 與 Standardization 探索資料中可能存在的群組結構，並練習 cluster interpretation。
+- Feature selection does not automatically improve predictive performance.
+- Higher training accuracy does not necessarily mean better generalization.
+- Preprocessing must be designed carefully to avoid data leakage.
+- Accuracy should be considered together with Precision, Recall, F1, class balance, and error cost when appropriate.
+- Ensemble models do not always outperform the strongest individual model.
+- Clustering and classification answer different types of questions.
 
-### 📐 Survey Sampling — US Population Data
+## 📐 Selected Statistical Coursework
+
+### Survey Sampling — US Population Data
 
 使用 USPOP 資料練習抽樣估計與誤差評估，包括：
 
