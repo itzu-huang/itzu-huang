@@ -111,6 +111,8 @@ Statistical Inference · Regression Analysis · ANOVA · Experimental Design · 
 ### New Taipei City Building Permit Classification & Clustering Analysis
 **Data Mining Final Project**
 
+[🔗 View Final Project](https://github.com/itzu-huang/Data_Mining_Coursework/tree/main/final-project/new-taipei-building-permit)
+
 這是一份以新北市政府開放資料平台建築執照紀錄為資料來源的 Data Mining 課程期末專案。原始資料包含 14,243 筆紀錄與 29 個變數（29 variables）；清理後保留 13,072 筆有效 target 資料，以 `whether_for_public`（Public / Non-public）作為分類目標，並以建築規模、土地使用、建築用途、停車位與日期等資訊練習 supervised learning 與 clustering。
 
 資料準備包括移除 identifier／high-cardinality 欄位、清理 numeric 欄位文字與異常格式、處理百分比欄位、轉換 ROC dates，以及建立 `licensing_year`、`licensing_month`、`permit_wait_days`、`construction_duration_days`、`total_parking_spaces`、`land_use_group` 與 `building_use_group` 等衍生變數。數值欄位使用 training-set median、類別欄位使用 training-set mode；target 缺失或無效值則移除。需要 train/test separation 時，preprocessing 只使用 training data fitted，以避免 data leakage。
@@ -122,6 +124,8 @@ Statistical Inference · Regression Analysis · ANOVA · Experimental Design · 
 ## 📊 Data Mining Coursework & Learning Progression
 
 這些課程作業與練習逐步建立資料前處理、模型評估、分類、分群與關聯法則的基礎，最後整合到上述 Data Mining Final Project。
+
+[🔗 View Full Data Mining Coursework Repository](https://github.com/itzu-huang/Data_Mining_Coursework)
 
 ### Data Handling & Preprocessing
 
