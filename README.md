@@ -121,6 +121,18 @@ Statistical Inference · Regression Analysis · ANOVA · Experimental Design · 
 
 非監督式學習則以 K-Means、Elbow Method、SSE、Silhouette Score、Cluster Profile、Cluster Interpretation 與 majority-vote comparison 探索資料結構。這裡的 K-Means 較適合用來探索 building profiles / groups，而不是取代主要的 supervised classification。
 
+## 📈 Regression Analysis Coursework
+
+**Statistical Modeling Coursework in R**
+
+Coursework progression from simple and multiple linear regression to statistical inference, categorical predictors, model diagnostics, remedial measures, model selection, polynomial regression, and interaction effects.
+
+The repository emphasizes the statistical modeling workflow:
+
+**Model specification → Inference → Assumption checking → Diagnostics → Remedial measures → Model comparison → Interpretation**
+
+[🔗 View Regression Analysis Coursework Repository](https://github.com/itzu-huang/Regression_Analysis_Coursework)
+
 ## 📊 Data Mining Coursework & Learning Progression
 
 這些課程作業與練習逐步建立資料前處理、模型評估、分類、分群與關聯法則的基礎，最後整合到上述 Data Mining Final Project。
