@@ -9,7 +9,6 @@ I am an undergraduate student in the Department of Statistics and Information Sc
 **Fu Jen Catholic University**<br>
 Department of Statistics and Information Science<br>
 2023 – Present<br>
-輔仁大學統計資訊學系
 
 ## 🛠️ Technical Skills
 
