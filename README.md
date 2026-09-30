@@ -23,11 +23,13 @@ Department of Statistics and Information Science<br>
 
 [🔗 View Diabetes Deterioration Risk Project](https://github.com/itzu-huang/Diabetes_Deterioration_Risk_Project)
 
-This coursework / research prototype team project explores complication-risk stratification for type 2 diabetes using clinical summaries and CGM time-series data. The dataset includes 100 patients, 109 monitoring records, and 112,287 CGM readings.
+[🌐 Open the Research Demo App](https://itzu-huang.github.io/Diabetes_Deterioration_Risk_Project/)
 
-The analysis includes risk modeling with Logistic Regression and XGBoost; CGM indicators and longitudinal analysis using Markov models and LSTM; and exploratory clustering and model interpretation. Patient-grouped validation keeps records from each patient within a single train/test split. The team also developed an elder-friendly decision-support app prototype.
+This team research project explores complication-associated risk stratification, continuous glucose monitoring (CGM) dynamics, and lifetime medical-cost scenarios for type 2 diabetes. The dataset includes 100 patients and 109 monitoring records.
 
-> Research/coursework prototype. Not clinically validated and not intended for diagnosis or treatment.
+The analysis combines Logistic Regression and XGBoost for complication classification, Markov models for glucose-state transitions, LSTM for short-term glucose forecasting, and Monte Carlo simulation for medical-cost scenarios. Classification uses repeated patient-grouped cross-validation to keep each patient's records together within each split. A browser-based demo presents the team's risk and cost scenarios.
+
+> Research/coursework prototype. Complication classification reflects observed associations, not validated future-event prediction. Cost estimates are assumption-based scenarios. Not intended for diagnosis or treatment.
 
 ## 📚 Selected Coursework Projects
 
